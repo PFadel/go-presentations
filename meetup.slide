@@ -1,0 +1,146 @@
+Estruturando tratamento de erros em Go
+Tags: erros, golang
+
+Pedro Fadel
+Pedreiro de Software
+pfadel@stone.com.br
+Dúvidas, perguntas, comentários ?
+
+* Agenda
+
+- Motivação
+- Método mulambo
+- Método ( um pouco ) menos mulambo
+- Afinal, o que é um erro ?
+- Método que te permite dormir à noite
+- Exemplos Interessantes
+- Conclusão
+- Dúvidas e Perguntas
+
+* Motivação
+
+- O tratamento de erros em _Go_ não é o mais intuitivo
+- Ao mesmo tempo ele te dá a liberdade de "dar jeitinhos" ( termo técnico: _workaround_ )
+- O que muitas vezes pode causar uma impressão *errada* da linguagem para pessoas de fora
+
+* Método mulambo - Disclaimer
+
+- Não me leve a mal, todos já fizemos isso
+- Você estava perdido e confuso e não tinha certeza do que sentia
+- Já passou, vai ficar tudo bem
+
+* Método mulambo
+
+- Função declarada retornando erros passando uma _string_ qualquer
+
+.code mulambo.go /^func somaNaturais/,/^}/ HLxxx
+
+* Método mulambo
+
+- Do outro lado é necessário uma comparação de string
+
+.play mulambo.go /^func main/,/^}/ HLxxx
+
+* Método mulambo
+** Problemas
+
+- Desenvolvedor (você) precisa lembrar de alterar em todos os lugares aonde se compara a _string_
+- Pouca informação pode ser passada adiante
+- Todo mundo se sente mal fazendo muita comparação de _string_
+
+* Método ( um pouco ) menos mulambo
+
+- Função declarada retornando erros passando uma constante
+
+.code menosMulambo.go /START OMIT/,/END OMIT/ HLxxx
+
+* Método ( um pouco ) menos mulambo
+
+- Do outro lado se compara com a constante
+
+.play menosMulambo.go /^func main/,/^}/ HLxxx
+
+* Método ( um pouco ) menos mulambo
+** Vantages
+
+- Só é preciso alterar a definição da constante
+- Você não se sente tão mal apesar de no fim das contas estar fazendo exatamente a mesma coisa
+
+* Método ( um pouco ) menos mulambo
+** Problemas
+
+- Ainda não é possível passar informação do erro
+- Difícil reaproveitar constantes
+
+* Afinal, o que é um erro ?
+
+- Apenas isso.
+
+.code error.go /START OMIT/,/END OMIT/ HLxxx
+
+- Não tão difícil de implementar, né
+
+* Método que te permite dormir à noite
+
+- Estruturas declaradas implementando a interface _Error_
+
+.code estruturado1.go /START OMIT/,/END OMIT/ HLxxx
+
+* Método que te permite dormir à noite
+
+- Função declarada retornando inicializando as estruturas
+
+.code estruturado1.go /^func somaNaturais/,/^}/ HLxxx
+
+* Método que te permite dormir à noite
+
+- Do outro lado se compara o *tipo* do erro
+
+.play estruturado1.go /^func main/,/^}/ HLxxx
+
+* Método que te permite dormir à noite
+** Vantagens
+
+- Temos total liberdade na escrita da mensagem do erro
+- Especialmente útil quando a mensagem será exibida para o usuário ou usada no retorno de uma API
+- Estruturas de erros podem ser reaproveitados em outras partes do código, mesmo com mensagens diferentes
+
+* Exemplo interessante 1
+
+- Reaproveitando erros que podem ter o mesmo tipo de tratamento na camada da aplicação
+
+.code estruturado2.go /START OMIT/,/END OMIT/ HLxxx
+
+* Exemplo interessante 2
+
+- Tornando suas estruturas mais inteligentes
+
+.code estruturado3.go /START OMIT/,/END OMIT/ HLxxx
+
+* Exemplo interessante 3
+
+- Consideremos estas duas interfaces abaixo
+
+.code estruturado4.go /START OMIT/,/END OMIT/ HLxxx
+
+* Exemplo interessante 3
+
+- E agora suas devidas implementações
+
+.code estruturado5.go /START OMIT/,/END OMIT/ HLxxx
+
+* Exemplo interessante 3
+
+- Poderíamos ter um código assim
+
+.code estruturado6.go /START OMIT/,/END OMIT/ HLxxx
+
+* Conclusão
+
+Criar estruturas e interfaces para os erros da sua aplicação te dá:
+
+- Maior estabilidade no projeto
+
+- Menor repetição de código
+
+- *Manutenção* *mais* *fácil*

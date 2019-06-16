@@ -1,0 +1,87 @@
+O Poder e a Liberdade do net/http
+Tags: net, http, golang
+
+Pedro Fadel
+Pedreiro de Software, Stone
+pfadel@stone.com.br
+@justpedrofadel
+Dúvidas, perguntas, comentários ?
+
+* Agenda
+
+- Motivação
+- Cliente e Transporte
+- Handler e HandleFunc
+- Servidor
+- Recursos e Middlewares
+- Testes e Mocks #TODO
+- BenchMark
+- Conclusão e Fontes
+- Dúvidas e Perguntas
+
+* Motivação
+
+- Cansado da discussão de melhor framework.
+- O pacote http é muito completo.
+- Curiosidade. #TODO Imagens?
+
+* Cliente
+O mais simples
+.play -edit client.go /^func main/,/^}/ HLxxx
+
+* Transporte
+Para ter controle sobre proxies, configuration de TLS, keep-alives, compressão e etc. crie um objeto _Transport_
+.play -edit transport.go /^func main/,/^}/ HLxxx
+
+* Handler
+Responde um request HTTP
+.play -edit handler.go /START OMIT/,/END OMIT/ HLxxx
+
+* HandleFunc
+http.HandleFunc(f) é um Handler que chama f
+.play -edit handlerfunc.go /START OMIT/,/END OMIT/ HLxxx
+
+* Servidor
+O mais simples
+.play -edit server.go /^func main/,/^}/ HLxxx
+
+* Recursos
+Recebendo argumentos
+.play -edit routes1.go /START OMIT/,/END OMIT/ HLxxx
+
+* Recursos
+Inicializações
+.play -edit routes2.go /START OMIT/,/END OMIT/ HLxxx
+
+* Recursos
+Mantendo consistência
+.play -edit routes3.go /START OMIT/,/END OMIT/ HLxxx
+
+* Middlewares #TODO Melhorar ?
+São apenas funções
+.play -edit middleware.go /START OMIT/,/END OMIT/ HLxxx
+
+* BenchMark!
+net/http
+.play -edit benchmark1.go /^func main/,/^}/ HLxxx
+
+* BenchMark!
+gin-gonic/gin
+.play -edit benchmark2.go /^func main/,/^}/ HLxxx
+
+* BenchMark!
+Resultados usando [[https://github.com/tsenart/vegeta][vegeta]] !
+
+ vegeta attack -targets target-read -rate 1000 -duration 10s | vegeta report
+.html benchmark.html
+
+* Conclusão
+- Perda mínima de desempenho
+- Mais fácil e simples de se usar do que imaginam
+
+* Fontes
+- https://medium.com/statuscode/how-i-write-go-http-services-after-seven-years-37c208122831
+- https://godoc.org/golang.org/x/tools/present
+- https://github.com/gin-gonic/gin
+- https://golang.org/pkg/net/http
+- https://github.com/tsenart/vegeta

@@ -1,0 +1,40 @@
+<html>
+<head>
+<style>
+.grid { height: auto; overflow: auto; }
+.grid td.static { position: fixed; background-color: white; }
+.grid td { border: solid 1px black; }
+.grid th { border: solid 1px black; }
+</style>
+</head>
+<body>
+  <div class='grid'>
+	<table style="width:100%">
+		<tr>
+		  <th>Servidor</th>
+		  <th>Média</th>
+		  <th>Percentil 50</th>
+		  <th>Percentil 95</th>
+		  <th>Percentil 99</th>
+		  <th>Máximo</th>
+		</tr>
+		<tr>
+		  <td>Gin</td>
+		  <td>258.252µs</td>
+		  <td>243.509µs</td>
+		  <td>350.54µs</td>
+		  <td>786.453µs</td>
+		  <td>4.285275ms</td>
+		</tr>
+		<tr>
+		  <td>Http</td>
+		  <td>290.464µs</td>
+		  <td>285.872µs</td>
+		  <td>380.134µs</td>
+		  <td>721.89µs</td>
+		  <td>5.71204ms</td>
+		</tr>
+	  </table>
+  </div>
+</body>
+</html>

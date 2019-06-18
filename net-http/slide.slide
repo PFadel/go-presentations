@@ -109,6 +109,9 @@ Resultados usando [[https://github.com/tsenart/vegeta][vegeta]] !
 - É divertido!
 .image images/thatsallfolks.gif
 
+* Perguntas ?
+.image images/ask-questions.gif
+
 * Fontes
 - https://godoc.org/golang.org/x/tools/present
 - https://github.com/gin-gonic/gin

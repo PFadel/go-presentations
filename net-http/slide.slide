@@ -11,10 +11,9 @@ Dúvidas, perguntas, comentários ?
 
 - Motivação
 - Cliente e Transporte
-- Handler e HandleFunc
 - Servidor
-- Recursos e Middlewares
-- Testes e Mocks #TODO
+- Handler e HandleFunc
+- Rotas e Middlewares
 - BenchMark
 - Conclusão e Fontes
 - Dúvidas e Perguntas
@@ -22,66 +21,98 @@ Dúvidas, perguntas, comentários ?
 * Motivação
 
 - Cansado da discussão de melhor framework.
-- O pacote http é muito completo.
-- Curiosidade. #TODO Imagens?
+- O pacote http é muito completo (é o que me dizem pelo menos).
+- Curiosidade.
+.html frameworks.html
+
+* Cliente
+.image images/client.gif
 
 * Cliente
 O mais simples
 .play -edit client.go /^func main/,/^}/ HLxxx
 
 * Transporte
-Para ter controle sobre proxies, configuration de TLS, keep-alives, compressão e etc. crie um objeto _Transport_
+Para ter controle sobre configurações no geral, crie um objeto _Transport_
 .play -edit transport.go /^func main/,/^}/ HLxxx
 
-* Handler
-Responde um request HTTP
-.play -edit handler.go /START OMIT/,/END OMIT/ HLxxx
-
-* HandleFunc
-http.HandleFunc(f) é um Handler que chama f
-.play -edit handlerfunc.go /START OMIT/,/END OMIT/ HLxxx
+* Servidor
+.image images/server.gif
 
 * Servidor
 O mais simples
 .play -edit server.go /^func main/,/^}/ HLxxx
 
-* Recursos
+* HandleFunc
+.play -edit handlerfunc.go /START OMIT/,/END OMIT/ HLxxx
+
+* Handler
+.play -edit handler.go /START OMIT/,/END OMIT/ HLxxx
+
+* Composição!
+.code custom.go /START OMIT/,/END OMIT/ HLxxx
+
+* Rotas
+.image images/routes.png
+
+* Rotas
 Recebendo argumentos
 .play -edit routes1.go /START OMIT/,/END OMIT/ HLxxx
 
-* Recursos
+* Rotas
 Inicializações
 .play -edit routes2.go /START OMIT/,/END OMIT/ HLxxx
 
-* Recursos
+* Rotas
 Mantendo consistência
 .play -edit routes3.go /START OMIT/,/END OMIT/ HLxxx
 
-* Middlewares #TODO Melhorar ?
+* Middlewares
+.image images/middleware.gif
+
+* Middlewares
 São apenas funções
-.play -edit middleware.go /START OMIT/,/END OMIT/ HLxxx
+.play -edit middleware1.go /START OMIT/,/END OMIT/ HLxxx
+
+* Middlewares
+.play -edit middleware2.go /START OMIT/,/END OMIT/ HLxxx
+
+* BenchMark!
+.image images/fast.gif
 
 * BenchMark!
 net/http
-.play -edit benchmark1.go /^func main/,/^}/ HLxxx
+.play -edit http/main.go /^func main/,/^}/ HLxxx
 
 * BenchMark!
 gin-gonic/gin
-.play -edit benchmark2.go /^func main/,/^}/ HLxxx
+.play -edit gin/main.go /^func main/,/^}/ HLxxx
+
+* BenchMark!
+gorilla/mux
+.play -edit gorilla/main.go /^func main/,/^}/ HLxxx
+
+* BenchMark!
+labstack/echo
+.play -edit echo/main.go /^func main/,/^}/ HLxxx
 
 * BenchMark!
 Resultados usando [[https://github.com/tsenart/vegeta][vegeta]] !
 
- vegeta attack -targets target-read -rate 1000 -duration 10s | vegeta report
+ vegeta attack -targets target-read -rate 1000 -duration 30s | vegeta report
 .html benchmark.html
 
 * Conclusão
-- Perda mínima de desempenho
-- Mais fácil e simples de se usar do que imaginam
+- Desempenho não só equivalente como mais confiável!
+- Mais fácil e simples de se usar do que imaginamos.
+- É divertido!
+.image images/thatsallfolks.gif
 
 * Fontes
-- https://medium.com/statuscode/how-i-write-go-http-services-after-seven-years-37c208122831
 - https://godoc.org/golang.org/x/tools/present
 - https://github.com/gin-gonic/gin
+- https://github.com/labstack/echo
+- https://github.com/gorilla/mux
 - https://golang.org/pkg/net/http
 - https://github.com/tsenart/vegeta
+- https://medium.com/statuscode/how-i-write-go-http-services-after-seven-years-37c208122831

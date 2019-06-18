@@ -14,11 +14,10 @@ func main() {
 	})
 
 	s := &http.Server{
-		Addr:           ":8080",          // HLxxx
-		Handler:        nil,              // http.DefaultServeMux // HLxxx
-		ReadTimeout:    10 * time.Second, // HLxxx
-		WriteTimeout:   10 * time.Second, // HLxxx
-		MaxHeaderBytes: 1 << 20,          // HLxxx
+		Addr:         ":8080",          // HLxxx
+		Handler:      nil,              // http.DefaultServeMux // HLxxx
+		ReadTimeout:  10 * time.Second, // HLxxx
+		WriteTimeout: 10 * time.Second, // HLxxx
 	}
 
 	log.Fatal(s.ListenAndServe()) // HLxxx

@@ -11,11 +11,11 @@ func main() {
 		Timeout: time.Second * time.Duration(30), // HLxxx
 	}
 
-	req, _ := http.NewRequest("GET", "https://httpbin.org/get", nil)
+	req, _ := http.NewRequest("GET", "https://httpbin.org/get", nil) // HLxxx
 	req.Header.Add("Accept", "application/json")
 
 	resp, _ := client.Do(req) // HLxxx
-	defer resp.Body.Close()
+	defer resp.Body.Close()   // HLxxx
 	body, _ := ioutil.ReadAll(resp.Body)
 	println(string(body))
 }

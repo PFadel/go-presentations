@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strconv"
 )
 
 // START OMIT
@@ -13,7 +12,7 @@ func increment(count int) http.HandlerFunc { // HLxxx
 	return func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method { // HLxxx
 		case http.MethodGet:
-			fmt.Fprintf(w, strconv.Itoa(t)) // HLxxx
+			fmt.Fprintf(w, "%d", t) // HLxxx
 		default:
 			w.WriteHeader(http.StatusMethodNotAllowed)
 		}

@@ -8,7 +8,7 @@ Just cd inside the folders and use `present`.
 
 You may need to run `go install golang.org/x/tools/cmd/present`.
 
-## Error-Handling (xx-xx-xxxx at Stone Pagamentos)
+## Error-Handling (21-04-2017 at Stone Pagamentos)
 
 [Here](./error-handling)
 

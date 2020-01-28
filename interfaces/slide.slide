@@ -5,30 +5,30 @@ Pedro Fadel
 Pedreiro de Software, Stone
 pfadel@stone.com.br
 @justpedrofadel
-Dúvidas, perguntas, comentários ?
+Dúvidas, perguntas, comentários?
 github.com/PFadel/go-presentations
 
 * Agenda
 
-- O que define um teste unitário ?
-- O que define um teste de integração ?
-- Por que precisamos de diferentes tipos de testes ?
-- Como mockar ?
+- O que define um teste unitário?
+- O que define um teste de integração?
+- Por que precisamos de diferentes tipos de testes?
+- Como mockar?
 - Mockery
 - Fx
 - Conclusão e Fontes
 - Dúvidas e Perguntas
 
-* O que define um teste unitário ?
+* O que define um teste unitário?
 
-* O que define um teste unitário ?
+* O que define um teste unitário?
 
 É o level de teste de software onde unidades individuais do software são testadas. O objetivo é validar que cada unidade do software funciona como foi planejada. *Uma* *unidade* *é* *a* *menor* *parte* *testável* *de* *qualquer* *software*.
 
 Fonte:
 .link http://softwaretestingfundamentals.com/unit-testing/
 
-* O que é a menor unidade testável em Go ?
+* O que é a menor unidade testável em Go?
 
 * Exemplo 1:
 .code exemplo1.go HLxxx
@@ -39,28 +39,28 @@ Fonte:
 * Ainda Exemplo 1... :
 .code exemplo1incompleto.go HLxxx
 
-* O que define um teste de integração ?
+* O que define um teste de integração?
 É o level de teste de software onde *unidades* *individuais* *são* *combinadas* *e* *testadas* *como* *um* *grupo*. O objetivo é expor falhas na interação entre as unidades integradas.
 
 Fonte:
 .link http://softwaretestingfundamentals.com/integration-testing/
 
-* Por que precisamos de diferentes tipos de testes ?
+* Por que precisamos de diferentes tipos de testes?
 
 .image images/unittesting.jpg
 
-* Imagine... Somente testes de integração
+* Agora, imagine... Somente testes de integração
 
 - Seu programa tem duas unidades.
 - Durante os testes, você encontra um bug.
-- Como você determina a fonte do bug ?
--- O bug está na unidade 1 ?
--- O bug está na unidade 2 ?
--- O bug está nas duas unidades ?
--- O bug está na interface entre as unidades ?
--- O bug está no test ou test case ?
+- Como você determina a fonte do bug?
+-- O bug está na unidade 1?
+-- O bug está na unidade 2?
+-- O bug está nas duas unidades?
+-- O bug está na interface entre as unidades?
+-- O bug está no test ou test case?
 
-* Imagine... Somente testes unitários
+* Agora, imagine... Somente testes unitários
 
 "A NASA review board found that the problem was in the software controlling the orbiter’s thrusters. The software calculated the force that the thrusters needed to exert in pounds of force. A second piece of code that read this data assumed it was in the metric unit—“newtons per square meter”."
 
@@ -71,15 +71,15 @@ Fonte:
 
 .image images/both.gif
 
-* Mas como garantir que unitários são unitários de verdade ?
+* Mas como garantir que unitários são unitários de verdade?
 
-* Solução ? Mocks!
+* Solução? Mocks!
 O ato de "mocking" ou "mockar" é a criação de objetos falsos que simulam o comportamento de objetos reais.
 
 Fonte:
 .link https://www.typemock.com/what-is-mocking/
 
-* Como mockar ?
+* Como mockar?
 
 No Python...
 .image images/python-mock.png
@@ -95,7 +95,7 @@ Não fica legal...
 Usando a lib:
 .link https://github.com/bouk/monkey
 
-* Solução ?
+* Solução?
 
 Interfaces!
 
@@ -113,7 +113,7 @@ Interfaces!
 
 .code test2.go /^func TestAbs/,/^}/ HLxxx
 
-* Mas e interfaces grandes ?...
+* Mas e interfaces grandes?...
 
 .image images/biginterface.png
 
@@ -126,7 +126,7 @@ Interfaces!
 Fonte:
 .link https://go-proverbs.github.io/
 
-* Solução ?
+* Solução?
 
 Mockery!
 
@@ -145,12 +145,12 @@ Fonte:
 
 .image images/mocktests.png
 
-* Beleza, mas e inicialização da aplicação ?
+* Beleza, mas e inicialização da aplicação?
 Cada objeto vai ser responsável por n interfaces?
 
 .image images/confusion.png
 
-* Solução ?
+* Solução?
 
 FX! Injeção de dependência em Go feito pelo Uber. (:
 
@@ -159,7 +159,7 @@ FX! Injeção de dependência em Go feito pelo Uber. (:
 Fonte:
 .link https://github.com/uber-go/fx
 
-* Como funciona ?
+* Como funciona?
 
 .code fx.go
 
@@ -169,7 +169,7 @@ Fonte:
 * Conclusão
 .image images/thatsallfolks.gif
 
-* Perguntas ?
+* Perguntas?
 .image images/ask-questions.gif
 
 * Fontes

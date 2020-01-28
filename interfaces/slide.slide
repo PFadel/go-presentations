@@ -1,0 +1,95 @@
+Como testar unitariamente e porque usar interfaces
+Tags: interfaces, tests, golang
+
+Pedro Fadel
+Pedreiro de Software, Stone
+pfadel@stone.com.br
+@justpedrofadel
+Dúvidas, perguntas, comentários ?
+github.com/PFadel/go-presentations
+
+* Agenda
+
+- O que define um teste unitário ?
+- O que define um teste de integração ?
+- Conclusão e Fontes
+- Dúvidas e Perguntas
+
+* O que define um teste unitário ?
+
+* Tem diferença de programação estruturada para OO ?
+
+* O que define um teste unitário ?
+
+É o level de teste de software onde unidades individuais do software são testadas. O objetivo é validar que cada unidade do software funciona como foi planejada. *Uma* *unidade* *é* *a* *menor* *parte* *testável* *de* *qualquer* *software*.
+
+Fonte:
+.link http://softwaretestingfundamentals.com/unit-testing/
+
+* Mas o que é a menor unidade testável em Go ?
+
+* Exemplo 1:
+.code exemplo1.go HLxxx
+
+* Testando Exemplo 1:
+.code test1.go HLxxx
+
+* Ainda Exemplo 1... :
+.code exemplo1incompleto.go HLxxx
+
+* O que define um teste de integração ?
+É o level de teste de software onde *unidades* *individuais* *são* *combinadas* *e* *testadas* *como* *um* *grupo*. O objetivo é expor falhas na interação entre as unidades integradas.
+
+Fonte:
+.link http://softwaretestingfundamentals.com/integration-testing/
+
+* Solução ? Mocks!
+O ato de "mocking" ou "mockar" é a criação de objetos falsos que simulam o comportamento de objetos reais.
+
+Fonte:
+.link https://medium.com/@piraveenaparalogarajah/what-is-mocking-in-testing-d4b0f2dbe20a
+
+* Como mockar ?
+
+No Python...
+.image images/python-mock.png
+
+Fonte:
+.link https://docs.python.org/3/library/unittest.mock.html
+
+* Tentando reproduzir em Go...
+
+Não fica legal..
+.image images/monkey_patch.png
+
+Usando a lib:
+.link https://github.com/bouk/monkey
+
+* Solução ?
+
+Interfaces!
+
+* Como ficaria o exemplo anterior...
+
+.code exemplo2.go HLxxx
+
+* Como ficaria o mock...
+
+.code test2.go /START OMIT/,/END OMIT/ HLxxx
+
+* ... e o teste.
+
+.code test2.go /^func TestAbs/,/^}/ HLxxx
+
+* Conclusão
+- TODO
+.image images/thatsallfolks.gif
+
+* Perguntas ?
+.image images/ask-questions.gif
+
+* Fontes
+.link https://docs.python.org/3/library/unittest.mock.html
+.link http://softwaretestingfundamentals.com/unit-testing/
+.link http://softwaretestingfundamentals.com/integration-testing/
+.link https://github.com/bouk/monkey

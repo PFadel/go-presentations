@@ -16,6 +16,6 @@ You may need to run `go install golang.org/x/tools/cmd/present`.
 
 [Here](./net-http)
 
-## Net-Http (28-01-2020 at Mundipagg)
+## Interfaces and unit tests (28-01-2020 at Mundipagg)
 
 [Here](./interfaces)

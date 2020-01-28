@@ -69,6 +69,9 @@ Usando a lib:
 
 Interfaces!
 
+TODO ajeitar tamanho
+.image images/supergopher.jpg
+
 * Como ficaria o exemplo anterior...
 
 .code exemplo2.go HLxxx
@@ -80,6 +83,23 @@ Interfaces!
 * ... e o teste.
 
 .code test2.go /^func TestAbs/,/^}/ HLxxx
+
+* Mas e interfaces grandes ?
+
+TODO mockery
+
+* Importante lembrar ...
+
+TODO
+- Go Proverbs
+
+* Mas como fica a inicialização ?
+
+TODO fx
+
+* Exemplo
+
+TODO exemplo fx
 
 * Conclusão
 - TODO
@@ -93,3 +113,4 @@ Interfaces!
 .link http://softwaretestingfundamentals.com/unit-testing/
 .link http://softwaretestingfundamentals.com/integration-testing/
 .link https://github.com/bouk/monkey
+.link https://medium.com/@piraveenaparalogarajah/what-is-mocking-in-testing-d4b0f2dbe20a

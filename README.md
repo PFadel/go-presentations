@@ -2,7 +2,7 @@
 
 My golang presentations.
 
-Created using [the go lang presentation tool](http://halyph.com/blog/2015/05/18/golang-presentation-tool.html).
+Created using [the go lang presentation tool](https://godoc.org/golang.org/x/tools/present).
 
 Just cd inside the folders and use `present`.
 

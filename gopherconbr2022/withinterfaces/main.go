@@ -9,20 +9,20 @@ const (
 	MAX_DELIVERY_DISTANCE = 100
 )
 
-type calculator interface {
+type Calculator interface {
 	distance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...string) float64
 }
 
-type latLongCalculator struct{}
+type calculator struct{}
 
-type deliverable interface {
-	withinDeliveryDistance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, c calculator) bool
+type Deliverable interface {
+	withinDeliveryDistance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, c Calculator) bool
 }
 
 type deliverabler struct{}
 
 // fonte: https://gist.github.com/hotdang-ca/6c1ee75c48e515aec5bc6db6e3265e49
-func (c *latLongCalculator) distance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...string) float64 {
+func (c *calculator) distance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...string) float64 {
 	radlat1 := float64(math.Pi * lat1 / 180)
 	radlat2 := float64(math.Pi * lat2 / 180)
 
@@ -49,7 +49,7 @@ func (c *latLongCalculator) distance(lat1 float64, lng1 float64, lat2 float64, l
 	return dist
 }
 
-func (d *deliverabler) withinDeliveryDistance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, c calculator) bool {
+func (d *deliverabler) withinDeliveryDistance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, c Calculator) bool {
 	distance := c.distance(lat1, lng1, lat2, lng2, "N")
 
 	return distance < MAX_DELIVERY_DISTANCE
@@ -64,7 +64,7 @@ func main() {
 	winnipeg := coordinate{49.895077, -97.138451}
 	regina := coordinate{50.445210, -104.618896}
 
-	calc := latLongCalculator{}
+	calc := calculator{}
 	deli := deliverabler{}
 
 	fmt.Println(deli.withinDeliveryDistance(winnipeg.lat, winnipeg.lng, regina.lat, regina.lng, &calc))

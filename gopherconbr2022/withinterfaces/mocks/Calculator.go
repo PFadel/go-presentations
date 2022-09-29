@@ -9,6 +9,14 @@ type Calculator struct {
 	mock.Mock
 }
 
+type Calculator_Expecter struct {
+	mock *mock.Mock
+}
+
+func (_m *Calculator) EXPECT() *Calculator_Expecter {
+	return &Calculator_Expecter{mock: &_m.Mock}
+}
+
 // Distance provides a mock function with given fields: lat1, lng1, lat2, lng2, unit
 func (_m *Calculator) Distance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...string) float64 {
 	_va := make([]interface{}, len(unit))
@@ -28,6 +36,40 @@ func (_m *Calculator) Distance(lat1 float64, lng1 float64, lat2 float64, lng2 fl
 	}
 
 	return r0
+}
+
+// Calculator_Distance_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Distance'
+type Calculator_Distance_Call struct {
+	*mock.Call
+}
+
+// Distance is a helper method to define mock.On call
+//   - lat1 float64
+//   - lng1 float64
+//   - lat2 float64
+//   - lng2 float64
+//   - unit ...string
+func (_e *Calculator_Expecter) Distance(lat1 interface{}, lng1 interface{}, lat2 interface{}, lng2 interface{}, unit ...interface{}) *Calculator_Distance_Call {
+	return &Calculator_Distance_Call{Call: _e.mock.On("Distance",
+		append([]interface{}{lat1, lng1, lat2, lng2}, unit...)...)}
+}
+
+func (_c *Calculator_Distance_Call) Run(run func(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...string)) *Calculator_Distance_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		variadicArgs := make([]string, len(args)-4)
+		for i, a := range args[4:] {
+			if a != nil {
+				variadicArgs[i] = a.(string)
+			}
+		}
+		run(args[0].(float64), args[1].(float64), args[2].(float64), args[3].(float64), variadicArgs...)
+	})
+	return _c
+}
+
+func (_c *Calculator_Distance_Call) Return(_a0 float64) *Calculator_Distance_Call {
+	_c.Call.Return(_a0)
+	return _c
 }
 
 type mockConstructorTestingTNewCalculator interface {

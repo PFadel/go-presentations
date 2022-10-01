@@ -10,6 +10,14 @@ import (
 	"github.com/PFadel/go-presentations/gopherconbr2022/withinterfaces/mocks"
 )
 
+type mockCalculator struct {
+	mockDistanceReturn float64
+}
+
+func (m *mockCalculator) Distance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...string) float64 {
+	return m.mockDistanceReturn
+}
+
 type coordinate struct {
 	lat float64
 	lng float64
@@ -31,7 +39,31 @@ func TestNoMock(t *testing.T) {
 	}
 }
 
-func TestWithMock(t *testing.T) {
+func TestWithBasicMock(t *testing.T) {
+	calc := mockCalculator{1.0}
+	deli := withinterfaces.NewDeliverable()
+
+	winnipeg := coordinate{49.895077, -97.138451}
+	regina := coordinate{50.445210, -104.618896}
+
+	got := deli.WithinDeliveryDistance(winnipeg.lat, winnipeg.lng, regina.lat, regina.lng, &calc)
+	want := true
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+
+	calc.mockDistanceReturn = 1000000.0
+
+	got = deli.WithinDeliveryDistance(winnipeg.lat, winnipeg.lng, regina.lat, regina.lng, &calc)
+	want = false
+
+	if got != want {
+		t.Errorf("got %t, wanted %t", got, want)
+	}
+}
+
+func TestWithMockery(t *testing.T) {
 
 	calc := mocks.NewCalculator(t)
 	deli := withinterfaces.NewDeliverable()
